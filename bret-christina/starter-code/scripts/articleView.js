@@ -75,7 +75,6 @@ articleView.initNewArticlePage = function() {
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
 
   $('#article-json').on('focus', function(){
-    console.log(this);
     this.select();
   });
   $('#article-json').hide();
@@ -140,5 +139,4 @@ articleView.initIndexPage = function() {
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-  console.log('hi');
 };
