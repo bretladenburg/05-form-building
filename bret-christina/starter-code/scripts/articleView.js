@@ -75,9 +75,10 @@ articleView.initNewArticlePage = function() {
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
 
   $('#article-json').on('focus', function(){
+    console.log(this);
     this.select();
-    this.hide();
   });
+  $('#article-json').hide();
 
   // TODO: Add an event handler to update the preview and the export field with info
   // from the article that WOULD BE created if any inputs change.
@@ -122,19 +123,22 @@ articleView.create = function() {
   $('#articles').append(renderedHtml);
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-json').show();
+  $('#article-json').val(`${JSON.stringify(newArticle)}` + ',');
 };
 
 // articleView.initNewArticlePage();
 
 articleView.initIndexPage = function() {
-  // articleView.populateFilters();
-  // articleView.handleCategoryFilter();
-  // articleView.handleAuthorFilter();
-  // articleView.handleMainNav();
-  // articleView.setTeasers();
+  articleView.populateFilters();
+  articleView.handleCategoryFilter();
+  articleView.handleAuthorFilter();
+  articleView.handleMainNav();
+  articleView.setTeasers();
   console.log('hi');
 };
